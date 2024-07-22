@@ -1,0 +1,215 @@
+:root{
+    --blur-width: 50px;
+    --anim-delay: 1s;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(images/853e01975d2783d9fa29.ttf);
+}
+
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    overflow: hidden;
+    font-family: Inter;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li{
+    margin: 0;
+    padding: 0;
+}
+
+.home{
+    background-image: url(images/9a8e4de60c041fb562ed.png);
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    position: relative;
+}
+
+.rippleGradient{
+    position: absolute; top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, black 2%);
+    z-index: 10;
+    animation: mainBGLoading 3s forwards
+}
+
+@keyframes mainBGLoading{
+    to{
+        scale: 200;
+    }
+}
+
+.textBox{
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%; width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle{
+    position: relative;
+    height: calc(50vh + var(--blur-width));
+    width: calc(50vh + var(--blur-width));
+    border-radius: 50%;
+    background-color: black;
+    background-image: url(images/1c59c1dedf1d3e8de061.jpg);
+    background-position: center;
+    background-size: 100%;
+    box-shadow: inset 0 0 var(--blur-width);
+    opacity: 0;
+    animation: circleLoading 1s 1s forwards;
+    overflow: hidden;
+}
+
+@keyframes circleLoading{
+    to{
+        opacity: 1;
+    }
+}
+
+.leaves{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.leaf{
+    position: absolute;
+    width: clamp(40vh, 70vw, 100vw);
+}
+
+.BottomLeft{
+    bottom: 0;
+    left: 0;
+    transform: translate(-1000px,1000px) rotate(90deg);
+    animation: bottomLeftAnim 1s var(--anim-delay) forwards;
+}
+
+.BottomRight{
+    bottom: 0;
+    right: 0;
+    transform: translate(1000px,1000px) rotate(-90deg);
+    animation: bottomRightAnim 1s var(--anim-delay) forwards;
+}
+
+.TopRight{
+    top: 0;
+    right: 0;
+    transform: translate(1000px, -1000px) rotate(-90deg);
+    animation: topRightAnim 1s var(--anim-delay) forwards;
+}
+
+.TopLeft{
+    top: 0;
+    left: 0;
+    transform: translate(-1000px, -1000px) rotate(90deg);
+    animation: topLeftAnim 1s var(--anim-delay) forwards
+}
+
+@keyframes bottomLeftAnim{
+    to{
+        transform: translate(0, 0) rotate(0);
+    }
+}
+
+@keyframes bottomLeftRevAnim{
+    from{
+        transform: translate(0, 0) rotate(0);
+    }
+    to{
+        transform: translate(-1000px,1000px) rotate(90deg);
+    }
+}
+
+@keyframes bottomRightAnim{
+    to{
+        transform: translate(0,0) rotate(0);
+    }
+}
+
+@keyframes bottomRightRevAnim{
+    from{
+        transform: translate(0,0) rotate(0);
+    }
+    to{
+        transform: translate(1000px,1000px) rotate(-90deg);
+    }
+}
+
+@keyframes topRightAnim{
+    to{
+        transform: translate(0,0) rotate(0);
+    }
+}
+
+@keyframes topRightRevAnim{
+    from{
+        transform: translate(0,0) rotate(0);
+    }
+    to{
+        transform: translate(1000px, -1000px) rotate(-90deg);
+    }
+}
+
+@keyframes topLeftAnim{
+    to{
+        transform: translate(0,0) rotate(0);
+    }
+}
+
+@keyframes topLeftRevAnim{
+    from{
+        transform: translate(0,0) rotate(0);
+    }
+    to{
+        transform: translate(-1000px, -1000px) rotate(90deg);
+    }
+}
+
+#vara-cont{
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    animation: textBoxGrow 1s 2s forwards;
+    padding: 3vh 0;
+    overflow: hidden;
+}
+
+.enterPrompt{
+    display: flex;
+    justify-content:center; align-items:end;
+    animation: grow 1s 4s forwards;
+    flex: 0;
+    opacity: 0;
+    color: #736C67;
+
+}
+
+@keyframes grow{
+    to{
+        flex: 0.2;
+        opacity: 1;
+    }
+}
+
+/* @keyframes blinkAnim{
+    0%, 100%{opacity: 1;}
+    50%{opacity: 0;}
+} */
+

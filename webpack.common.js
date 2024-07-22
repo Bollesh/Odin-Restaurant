@@ -1,48 +1,46 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
-const removePlugin = require('remove-files-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require("path");
 
 module.exports = {
-  entry: {
-    app: './src/index.js',
-    style: '/src/style.css',
+  entry: "./src/index.js",
+  output: {
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    assetModuleFilename: 'images/[hash][ext][query]'
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Odin Restaurant',
-      template: 'src/index.html',
-      inject: 'head',
-      scriptLoading: 'defer',
+      template: "./src/index.html",
     }),
-    new MiniCSSExtractPlugin({
-      filename: '[name].css',
-    }),
-    new removePlugin({
-      after: {
-        include: ["dist/style.js"],
-      }
-    }),
+    new MiniCSSExtractPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        {from: 'src/images', to: 'images'},
         {from: 'src/fonts', to: 'fonts'}
       ]
     }),
   ],
+  resolve: {
+    modules: [__dirname, "src", "node_modules"],
+    extensions: ["*", ".js", ".jsx", ".tsx", ".ts"],
+  },
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: [MiniCSSExtractPlugin.loader, "css-loader"],
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [MiniCSSExtractPlugin.loader,"css-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        type: 'asset/resource',
       }
-    ]
+    ],
   },
-  output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
-
-}
+};
