@@ -1,0 +1,238 @@
+@font-face {
+    font-family: redditMono;
+    src: url(283636214cc4d850e2aa.ttf);
+}
+
+@font-face {
+    font-family: ShadowsIntoLight;
+    src: url(e8c09384ff0643bf385d.ttf);
+}
+
+:root{
+    --blur-width: 50px;
+    --anim-delay: 1.8s;
+}
+
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    overflow: hidden;
+    background-color: rgb(10,10,10);
+    background-image: url(9a8e4de60c041fb562ed.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, li{
+    margin: 0;
+    padding: 0;
+}
+
+.rippleGradient{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, black 2%);
+    z-index: -1;
+    animation: mainBGLoading 3s forwards
+}
+
+@keyframes mainBGLoading{
+    to{
+        scale: 200;
+    }
+}
+
+.circle{
+    position: relative;
+    height: calc(50vh + var(--blur-width));
+    width: calc(50vh + var(--blur-width));
+    border-radius: 50%;
+    background-color: black;
+    background-image: url(1c59c1dedf1d3e8de061.jpeg);
+    background-position: center;
+    background-size: 100%;
+    box-shadow: inset 0 0 var(--blur-width);
+    opacity: 0;
+    animation: circleLoading 1s 1s forwards;
+    overflow: hidden;
+}
+
+.circleRipple{
+    position: absolute;
+    top: 22%; left: 40%;
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    background-color: transparent;
+    border: solid 2vh rgba(249, 237, 129, 1);
+    box-shadow: inset 0 0 10px rgba(249, 237, 129, 1), 0 0 10px rgba(249, 237, 129, 1);
+    /* background-color: #dc9646; */
+    animation: someAnim 4s;
+}
+
+@keyframes someAnim{
+    to{
+        scale:100;
+        border-color: rgba(220, 150, 70, 1);
+        box-shadow: inset 0 0 10px rgba(220, 150, 70, 1), 0 0 10px rgba(220, 150, 70, 1);
+    }
+}
+
+@keyframes circleLoading{
+    to{
+        opacity: 1;
+    }
+}
+
+.leaves{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.leaf{
+    position: absolute;
+    width: clamp(40vh, 1200px, 1000vh);
+}
+
+.bottomLeft{
+    bottom: 0;
+    left: 0;
+    transform: translate(-1000px,1000px) rotate(90deg);
+    animation: bottomLeftAnim 1s var(--anim-delay) forwards;
+}
+
+.bottomRight{
+    bottom: 0;
+    right: 0;
+    transform: translate(1000px,1000px) rotate(-90deg);
+    animation: bottomRightAnim 1s var(--anim-delay) forwards;
+}
+
+.topRight{
+    top: 0;
+    right: 0;
+    transform: translate(1000px, -1000px) rotate(-90deg);
+    animation: topRightAnim 1s var(--anim-delay) forwards;
+}
+
+.topLeft{
+    top: 0;
+    left: 0;
+    transform: translate(-1000px, -1000px) rotate(90deg);
+    animation: topLeftAnim 1s var(--anim-delay) forwards
+}
+
+@keyframes bottomLeftAnim{
+    to{
+        transform: translate(0, 0) rotate(0);
+    }
+}
+
+@keyframes bottomLeftRevAnim{
+    from{
+        transform: translate(0, 0) rotate(0);
+    }
+    to{
+        transform: translate(-1000px,1000px) rotate(90deg);
+    }
+}
+
+@keyframes bottomRightAnim{
+    to{
+        transform: translate(0,0) rotate(0);
+    }
+}
+
+@keyframes bottomRightRevAnim{
+    from{
+        transform: translate(0,0) rotate(0);
+    }
+    to{
+        transform: translate(1000px,1000px) rotate(-90deg);
+    }
+}
+
+@keyframes topRightAnim{
+    to{
+        transform: translate(0,0) rotate(0);
+    }
+}
+
+@keyframes topRightRevAnim{
+    from{
+        transform: translate(0,0) rotate(0);
+    }
+    to{
+        transform: translate(1000px, -1000px) rotate(-90deg);
+    }
+}
+
+@keyframes topLeftAnim{
+    to{
+        transform: translate(0,0) rotate(0);
+    }
+}
+
+@keyframes topLeftRevAnim{
+    from{
+        transform: translate(0,0) rotate(0);
+    }
+    to{
+        transform: translate(-1000px, -1000px) rotate(90deg);
+    }
+}
+
+#textCont{
+    position: relative;
+    width: 100%;
+    height: 0;
+    animation: textBoxGrow 1s 2s forwards;
+    padding: 3vh 0;
+    overflow: hidden;
+}
+
+#textCont > svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+@keyframes textBoxGrow{
+    to{
+        height: 15vh;
+    }
+}
+
+#enterKeyPromt{
+    font-family: redditMono;
+    color: #736C67;
+    width: 100%;
+    height: 0;
+    animation: enterKeyPromtVisibility 1s 5s forwards;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes enterKeyPromtVisibility{
+    to{
+        height: 5vh;
+        opacity: 1;
+    }
+}
+
+/* Load out animation */
+
+.topLeftLoadOut{
+    animation: topLeftAnim reverse 1s forwards;
+}
