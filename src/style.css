@@ -21,6 +21,9 @@ body{
     justify-content: center;
     overflow: hidden;
     font-family: Inter;
+    background-image: url('./images/bg.png');
+    background-size: cover;
+
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, li{
@@ -29,10 +32,8 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
 }
 
 .home{
-    background-image: url('./images/bg.png');
     height: 100vh;
     width: 100vw;
-    background-size: cover;
     position: relative;
 }
 
@@ -41,13 +42,13 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
     height: 100%;
     width: 100%;
     background: radial-gradient(circle at 50% 50%, transparent 0%, black 2%);
-    z-index: 10;
+    z-index: 100;
     animation: mainBGLoading 3s forwards
 }
 
 @keyframes mainBGLoading{
     to{
-        scale: 200;
+        scale: 300;
     }
 }
 
@@ -72,14 +73,7 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
     background-size: 100%;
     box-shadow: inset 0 0 var(--blur-width);
     opacity: 0;
-    animation: circleLoading 1s 1s forwards;
     overflow: hidden;
-}
-
-@keyframes circleLoading{
-    to{
-        opacity: 1;
-    }
 }
 
 .leaves{
@@ -87,99 +81,36 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
     height: 100%;
     width: 100%;
     overflow: hidden;
+    z-index: 10;
 }
 
 .leaf{
     position: absolute;
-    width: clamp(40vh, 70vw, 100vw);
+    width: clamp(40vh, 60vw, 90vw);
 }
 
 .BottomLeft{
     bottom: 0;
     left: 0;
-    transform: translate(-1000px,1000px) rotate(90deg);
-    animation: bottomLeftAnim 1s var(--anim-delay) forwards;
+    transform-origin: bottom left;
 }
 
 .BottomRight{
     bottom: 0;
     right: 0;
-    transform: translate(1000px,1000px) rotate(-90deg);
-    animation: bottomRightAnim 1s var(--anim-delay) forwards;
+    transform-origin: bottom right;
 }
 
 .TopRight{
     top: 0;
     right: 0;
-    transform: translate(1000px, -1000px) rotate(-90deg);
-    animation: topRightAnim 1s var(--anim-delay) forwards;
+    transform-origin: top right;
 }
 
 .TopLeft{
     top: 0;
     left: 0;
-    transform: translate(-1000px, -1000px) rotate(90deg);
-    animation: topLeftAnim 1s var(--anim-delay) forwards
-}
-
-@keyframes bottomLeftAnim{
-    to{
-        transform: translate(0, 0) rotate(0);
-    }
-}
-
-@keyframes bottomLeftRevAnim{
-    from{
-        transform: translate(0, 0) rotate(0);
-    }
-    to{
-        transform: translate(-1000px,1000px) rotate(90deg);
-    }
-}
-
-@keyframes bottomRightAnim{
-    to{
-        transform: translate(0,0) rotate(0);
-    }
-}
-
-@keyframes bottomRightRevAnim{
-    from{
-        transform: translate(0,0) rotate(0);
-    }
-    to{
-        transform: translate(1000px,1000px) rotate(-90deg);
-    }
-}
-
-@keyframes topRightAnim{
-    to{
-        transform: translate(0,0) rotate(0);
-    }
-}
-
-@keyframes topRightRevAnim{
-    from{
-        transform: translate(0,0) rotate(0);
-    }
-    to{
-        transform: translate(1000px, -1000px) rotate(-90deg);
-    }
-}
-
-@keyframes topLeftAnim{
-    to{
-        transform: translate(0,0) rotate(0);
-    }
-}
-
-@keyframes topLeftRevAnim{
-    from{
-        transform: translate(0,0) rotate(0);
-    }
-    to{
-        transform: translate(-1000px, -1000px) rotate(90deg);
-    }
+    transform-origin: top left;
 }
 
 #vara-cont{
@@ -194,21 +125,6 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
 .enterPrompt{
     display: flex;
     justify-content:center; align-items:end;
-    animation: grow 1s 4s forwards;
-    flex: 0;
-    opacity: 0;
     color: #736C67;
-
 }
 
-@keyframes grow{
-    to{
-        flex: 0.2;
-        opacity: 1;
-    }
-}
-
-/* @keyframes blinkAnim{
-    0%, 100%{opacity: 1;}
-    50%{opacity: 0;}
-} */

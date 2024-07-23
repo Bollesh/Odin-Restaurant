@@ -29,6 +29,7 @@
     "webpack-dev-server": "5.0.4"
   },
   "dependencies": {
+    "framer-motion": "^11.3.9",
     "vara": "^1.4.1"
   }
 }

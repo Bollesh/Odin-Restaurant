@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Vara from "vara";
+import { motion } from "framer-motion";
 
 export default function VaraText({ text }){
     useEffect(()=>{
@@ -22,6 +23,11 @@ export default function VaraText({ text }){
             }
         );
     },[])
+
+    // return (<motion.div id="vara-cont"
+    //             exit={{opacity: 0}}
+    //             transition={{duration: 0.5}}
+    //         ></motion.div>)
 
     return <div id="vara-cont"></div>
 }
