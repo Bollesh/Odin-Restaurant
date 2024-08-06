@@ -1,15 +1,22 @@
 :root{
     --blur-width: 50px;
     --anim-delay: 1s;
+    --man-img: "";
 }
 
 *{
     box-sizing: border-box;
+    user-select: none;
 }
 
 @font-face {
     font-family: Inter;
     src: url(fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+@font-face {
+    font-family: Sil;
+    src: url(./fonts/ShadowsIntoLight-Regular.ttf);
 }
 
 body{
@@ -21,9 +28,8 @@ body{
     justify-content: center;
     overflow: hidden;
     font-family: Inter;
-    background-image: url('./images/bg.png');
+    background-image: url("./images/bg.png");
     background-size: cover;
-
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, li{
@@ -128,3 +134,181 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
     color: #736C67;
 }
 
+
+.Header{
+    font-family: Sil;
+    position: absolute; top: 0; left: 0;
+    padding: 20px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(20, 20, 20,0.8);
+    ul{
+        display: flex;
+        gap: 5vw;
+        li{
+            text-decoration: none;
+            list-style: none;
+            button{
+                font-family: Sil;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                font-size: clamp(1.25rem, 2vw, 1.6rem);
+                color: white;
+                cursor: pointer;
+            }
+        }
+    }
+    .logoText{
+        font-family: Sil;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: clamp(1.25rem, 4vw, 5vh);
+        cursor: pointer;
+    }
+}
+
+.MainPage{
+    /* position: relative; */
+    height: calc(50vh + var(--blur-width));
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.MainPage section{
+    background-size: cover;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    gap: 0rem;
+}
+
+.managerCircle{
+    position: relative;
+    height: calc(50vh + var(--blur-width));
+    width: calc(50vh + var(--blur-width));
+    border-radius: 50%;
+    background-color: black;
+    background-image: var(--man-img);
+    background-position: center;
+    background-size: 100%;
+    box-shadow: inset 0 0 var(--blur-width);
+    opacity: 1;
+    overflow: hidden;
+}
+
+.moreText{
+    flex: 1;
+    background-color: rgba(20,20,20,0.8);
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+}
+
+.locationBox{
+    background-color: rgba(20,20,20,0.8);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: white;
+    border-radius: 20px;
+    width: 50vw;
+    height: 60vh;
+}
+
+.loc{
+    width: 60%;
+}
+
+.tree{
+    position: absolute;
+    height: 100vh;
+    bottom: -10rem;
+}
+
+.tree.left{
+    left: -10rem;
+    /* animation: ani 1s forwards; */
+}
+
+.tree.right{
+    right: -10rem;
+    transform: rotateY(180deg);
+}
+
+@keyframes ani{
+    0%{
+        transform: rotate(-90deg) translate(-1000px, 1000px);
+    }
+    100%{
+        transform: rotate(0) translate(0,0);
+    }
+}
+
+.main{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.menu{
+    margin-top: 18rem;
+    margin-bottom: 10rem;
+    width: 80vw;
+    height: 80vh;
+    overflow-y: scroll;
+    gap: 10%;
+    color: white;
+    grid-template-columns: repeat(auto-fit, minmax(26vw, 1fr));
+    grid-auto-rows: 20rem;
+}
+
+.menu-item{
+    background-color: rgba(20,20,20,0.8);
+    border-radius: 10px;
+    /* border: solid 10px black; */
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+}
+
+.item{
+    height: 25vh;
+    /* height: auto; */
+    width: 25vw;
+    border-radius: 50%;
+    border: solid 10px white;
+    /* box-shadow: 0 0 10px white; */
+}
+
+.desc{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.descTitle{
+    font-family: Sil;
+    font-size: 36px;
+    font-weight: 900;
+}
+
+.info{
+    opacity: 0.6;
+    font-size: 14px;
+}
+
+.price{
+    font-weight: 900;
+    margin-top: 5rem;
+}

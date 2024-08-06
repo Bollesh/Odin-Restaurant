@@ -7,15 +7,15 @@ export default function FirstPage({ close }){
     let leavesElems = [];
     for(let i = 0; i < 4; i++){ 
         leavesElems.push(<motion.img
-                    key={leaves[0][i]}
-                    src={require(`../images/bananaLeaf${leaves[0][i]}.png`)}
-                    alt={`${leaves[0][i]} leaf`}
-                    className={`leaf ${leaves[0][i]}`}
-                    initial={{transform: `translate(${leaves[1][i]*1000}px, ${leaves[2][i]*1000}px) rotate(${leaves[1][i] > 0 ? -90 : 90}deg)`}}
-                    animate={{transform: `translate(0, 0) rotate(0)`}}
-                    transition={{delay: 1, duration: 1}}
-                    exit={{transform: `translate(${i % 2 === 0 ? -1000 : 1000}px, ${i < 2 ? 1000 : -1000}px) rotate(${i % 2 === 0 ? 90 : -90}deg)`}}
-                />)
+            key={leaves[0][i]}
+            src={require(`../images/bananaLeaf${leaves[0][i]}.png`)}
+            alt={`${leaves[0][i]} leaf`}
+            className={`leaf ${leaves[0][i]}`}
+            initial={{transform: `translate(${leaves[1][i]*1000}px, ${leaves[2][i]*1000}px) rotate(${leaves[1][i] > 0 ? -90 : 90}deg)`}}
+            animate={{transform: `translate(0, 0) rotate(0)`}}
+            transition={{delay: 1, duration: 1}}
+            exit={{transform: `translate(${i % 2 === 0 ? -1000 : 1000}px, ${i < 2 ? 1000 : -1000}px) rotate(${i % 2 === 0 ? 90 : -90}deg)`}}
+        />)
     }
 
     return(
@@ -24,6 +24,7 @@ export default function FirstPage({ close }){
                 <div className="leaves">
                         {leavesElems}
                 </div>
+                <div className="rippleGradient"></div>
                 <motion.div className="textBox"
                     exit={{opacity: 0}}
                     transition={{duration: 1}}

@@ -1,15 +1,22 @@
 :root{
     --blur-width: 50px;
     --anim-delay: 1s;
+    --man-img: "";
 }
 
 *{
     box-sizing: border-box;
+    user-select: none;
 }
 
 @font-face {
     font-family: Inter;
     src: url(images/853e01975d2783d9fa29.ttf);
+}
+
+@font-face {
+    font-family: Sil;
+    src: url(images/e8c09384ff0643bf385d.ttf);
 }
 
 body{
@@ -21,6 +28,8 @@ body{
     justify-content: center;
     overflow: hidden;
     font-family: Inter;
+    background-image: url(images/9a8e4de60c041fb562ed.png);
+    background-size: cover;
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, li{
@@ -29,10 +38,8 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
 }
 
 .home{
-    background-image: url(images/9a8e4de60c041fb562ed.png);
     height: 100vh;
     width: 100vw;
-    background-size: cover;
     position: relative;
 }
 
@@ -41,13 +48,13 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
     height: 100%;
     width: 100%;
     background: radial-gradient(circle at 50% 50%, transparent 0%, black 2%);
-    z-index: 10;
+    z-index: 100;
     animation: mainBGLoading 3s forwards
 }
 
 @keyframes mainBGLoading{
     to{
-        scale: 200;
+        scale: 300;
     }
 }
 
@@ -72,14 +79,7 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
     background-size: 100%;
     box-shadow: inset 0 0 var(--blur-width);
     opacity: 0;
-    animation: circleLoading 1s 1s forwards;
     overflow: hidden;
-}
-
-@keyframes circleLoading{
-    to{
-        opacity: 1;
-    }
 }
 
 .leaves{
@@ -87,99 +87,36 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
     height: 100%;
     width: 100%;
     overflow: hidden;
+    z-index: 10;
 }
 
 .leaf{
     position: absolute;
-    width: clamp(40vh, 70vw, 100vw);
+    width: clamp(40vh, 60vw, 90vw);
 }
 
 .BottomLeft{
     bottom: 0;
     left: 0;
-    transform: translate(-1000px,1000px) rotate(90deg);
-    animation: bottomLeftAnim 1s var(--anim-delay) forwards;
+    transform-origin: bottom left;
 }
 
 .BottomRight{
     bottom: 0;
     right: 0;
-    transform: translate(1000px,1000px) rotate(-90deg);
-    animation: bottomRightAnim 1s var(--anim-delay) forwards;
+    transform-origin: bottom right;
 }
 
 .TopRight{
     top: 0;
     right: 0;
-    transform: translate(1000px, -1000px) rotate(-90deg);
-    animation: topRightAnim 1s var(--anim-delay) forwards;
+    transform-origin: top right;
 }
 
 .TopLeft{
     top: 0;
     left: 0;
-    transform: translate(-1000px, -1000px) rotate(90deg);
-    animation: topLeftAnim 1s var(--anim-delay) forwards
-}
-
-@keyframes bottomLeftAnim{
-    to{
-        transform: translate(0, 0) rotate(0);
-    }
-}
-
-@keyframes bottomLeftRevAnim{
-    from{
-        transform: translate(0, 0) rotate(0);
-    }
-    to{
-        transform: translate(-1000px,1000px) rotate(90deg);
-    }
-}
-
-@keyframes bottomRightAnim{
-    to{
-        transform: translate(0,0) rotate(0);
-    }
-}
-
-@keyframes bottomRightRevAnim{
-    from{
-        transform: translate(0,0) rotate(0);
-    }
-    to{
-        transform: translate(1000px,1000px) rotate(-90deg);
-    }
-}
-
-@keyframes topRightAnim{
-    to{
-        transform: translate(0,0) rotate(0);
-    }
-}
-
-@keyframes topRightRevAnim{
-    from{
-        transform: translate(0,0) rotate(0);
-    }
-    to{
-        transform: translate(1000px, -1000px) rotate(-90deg);
-    }
-}
-
-@keyframes topLeftAnim{
-    to{
-        transform: translate(0,0) rotate(0);
-    }
-}
-
-@keyframes topLeftRevAnim{
-    from{
-        transform: translate(0,0) rotate(0);
-    }
-    to{
-        transform: translate(-1000px, -1000px) rotate(90deg);
-    }
+    transform-origin: top left;
 }
 
 #vara-cont{
@@ -194,22 +131,184 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
 .enterPrompt{
     display: flex;
     justify-content:center; align-items:end;
-    animation: grow 1s 4s forwards;
-    flex: 0;
-    opacity: 0;
     color: #736C67;
-
 }
 
-@keyframes grow{
-    to{
-        flex: 0.2;
-        opacity: 1;
+
+.Header{
+    font-family: Sil;
+    position: absolute; top: 0; left: 0;
+    padding: 20px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(20, 20, 20,0.8);
+    ul{
+        display: flex;
+        gap: 5vw;
+        li{
+            text-decoration: none;
+            list-style: none;
+            button{
+                font-family: Sil;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                font-size: clamp(1.25rem, 2vw, 1.6rem);
+                color: white;
+                cursor: pointer;
+            }
+        }
+    }
+    .logoText{
+        font-family: Sil;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: clamp(1.25rem, 4vw, 5vh);
+        cursor: pointer;
     }
 }
 
-/* @keyframes blinkAnim{
-    0%, 100%{opacity: 1;}
-    50%{opacity: 0;}
-} */
+.MainPage{
+    /* position: relative; */
+    height: calc(50vh + var(--blur-width));
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
 
+.MainPage section{
+    background-size: cover;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    gap: 0rem;
+}
+
+.managerCircle{
+    position: relative;
+    height: calc(50vh + var(--blur-width));
+    width: calc(50vh + var(--blur-width));
+    border-radius: 50%;
+    background-color: black;
+    background-image: var(--man-img);
+    background-position: center;
+    background-size: 100%;
+    box-shadow: inset 0 0 var(--blur-width);
+    opacity: 1;
+    overflow: hidden;
+}
+
+.moreText{
+    flex: 1;
+    background-color: rgba(20,20,20,0.8);
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+}
+
+.locationBox{
+    background-color: rgba(20,20,20,0.8);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: white;
+    border-radius: 20px;
+    width: 50vw;
+    height: 60vh;
+}
+
+.loc{
+    width: 60%;
+}
+
+.tree{
+    position: absolute;
+    height: 100vh;
+    bottom: -10rem;
+}
+
+.tree.left{
+    left: -10rem;
+    /* animation: ani 1s forwards; */
+}
+
+.tree.right{
+    right: -10rem;
+    transform: rotateY(180deg);
+}
+
+@keyframes ani{
+    0%{
+        transform: rotate(-90deg) translate(-1000px, 1000px);
+    }
+    100%{
+        transform: rotate(0) translate(0,0);
+    }
+}
+
+.main{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.menu{
+    margin-top: 18rem;
+    margin-bottom: 10rem;
+    width: 80vw;
+    height: 80vh;
+    overflow-y: scroll;
+    gap: 10%;
+    color: white;
+    grid-template-columns: repeat(auto-fit, minmax(26vw, 1fr));
+    grid-auto-rows: 20rem;
+}
+
+.menu-item{
+    background-color: rgba(20,20,20,0.8);
+    border-radius: 10px;
+    /* border: solid 10px black; */
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+}
+
+.item{
+    height: 25vh;
+    /* height: auto; */
+    width: 25vw;
+    border-radius: 50%;
+    border: solid 10px white;
+    /* box-shadow: 0 0 10px white; */
+}
+
+.desc{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.descTitle{
+    font-family: Sil;
+    font-size: 36px;
+    font-weight: 900;
+}
+
+.info{
+    opacity: 0.6;
+    font-size: 14px;
+}
+
+.price{
+    font-weight: 900;
+    margin-top: 5rem;
+}
